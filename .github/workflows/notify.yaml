@@ -1,0 +1,27 @@
+name: Weekly Github Update for Matttermost
+
+on:
+  schedule:
+    # Every week on Thursday @ 1PM
+    # - cron: "0 1 * * 4"
+    - cron: "* * * * *"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Create Mattermost Message
+      run: |
+        DATE=$(date  --date="7 days ago" +"%Y-%m-%d")
+        GITHUB_URL="https://github.com/pulls?q=merged%3A%3E($DATE)+org%3Acertbot+"
+        UPDATED_URL="https://github.com/pulls?q=updated%3A%3E($DATE)+org%3Acertbot+"
+        echo "{
+                \"text\":\" View all PRs merged in the last week [(link)]($GITHUB_URL) \"
+                 \"props\": {
+                    "card": "PRs Updated in Last Week :\n\n [](updated:>2022-02-02 org:certbot )\n\n"
+                  }
+              }" > mattermost.json
+    - uses: mattermost/action-mattermost-notify@master
+      env:
+        MATTERMOST_WEBHOOK_URL: ${{ secrets.MATTERMOST_WEBHOOK_URL }}
+          
