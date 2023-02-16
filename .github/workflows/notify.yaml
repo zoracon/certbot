@@ -16,10 +16,7 @@ jobs:
         MERGED_URL="https://github.com/pulls?q=merged%3A%3E${DATE}+org%3Acertbot+"
         UPDATED_URL="https://github.com/pulls?q=updated%3A%3E${DATE}+org%3Acertbot+"
         echo "{
-                \"text\":\"## View Actvity in The Last Week \",
-                \"props\": {
-                    \"card\": \"PRs Updated in Last Week :\n\n [link]($UPDATED_URL)\n\n PRs Merged in the Last Week: [link]($MERGED_URL) \n\n \"
-                }
+                \"text\":\"## Updated PRs in Past Week: [link]($UPDATED_URL)\n\n ## Merged PRs in the Past Week: [link]($MERGED_URL) \"
               }" > mattermost.json
     - uses: mattermost/action-mattermost-notify@master
       env:
