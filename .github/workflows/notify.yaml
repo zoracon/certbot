@@ -18,7 +18,7 @@ jobs:
         echo "{
                 \"text\":\" View all PRs merged in the last week [link]($MERGED_URL) \",
                 \"props\": {
-                    "card": "PRs Updated in Last Week :\n\n []($UPDATED_URL)\n\n"
+                    \"card\": \"PRs Updated in Last Week :\n\n []($UPDATED_URL)\n\n \"
                 }
               }" > mattermost.json
     - uses: mattermost/action-mattermost-notify@master
