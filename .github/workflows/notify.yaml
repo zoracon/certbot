@@ -16,7 +16,7 @@ jobs:
         GITHUB_URL="https://github.com/pulls?q=merged%3A%3E${DATE}+org%3Acertbot+"
         UPDATED_URL="https://github.com/pulls?q=updated%3A%3E${DATE}+org%3Acertbot+"
         echo "{
-                \"text\":\" View all PRs merged in the last week [(link)]($GITHUB_URL) \"
+                \"text\":\" View all PRs merged in the last week [link]($GITHUB_URL) \"
                  \"props\": {
                     "card": "PRs Updated in Last Week :\n\n []($UPDATED_URL)\n\n"
                   }
