@@ -4,7 +4,7 @@ on:
   schedule:
     # 6AM Everyday
     # - cron: "0 6 * * *"
-    - cron: "*/5 * * * *" Test Cron
+    - cron: "*/5 * * * *"
 jobs:
   send-mattermost-message:
     runs-on: ubuntu-latest
