@@ -16,7 +16,7 @@ jobs:
         REVIEWS="https://github.com/notifications?query=reason%3Areview-requested"
         PRS="https://github.com/pulls"
         ASSIGNMENTS="https://github.com/notifications?query=org%3Acertbot++reason%3Aassign+"
-        echo "{\"text\":\"##### Unread Messages\n\n}" > mattermost.json
+        echo "{\"text\":\" "Text"}" > mattermost.json
     - uses: mattermost/action-mattermost-notify@master
       env:
         MATTERMOST_WEBHOOK_URL: ${{ secrets.MATTERMOST_WEBHOOK_URL }}
