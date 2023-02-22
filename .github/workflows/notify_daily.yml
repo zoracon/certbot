@@ -1,1 +1,32 @@
+name: Weekly Github Update
 
+on:
+  schedule:
+    # 6AM Everyday
+    # - cron: "0 6 * * *"
+    - cron: "*/5 * * * *" Test Cron
+jobs:
+  send-mattermost-message:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Create Mattermost Message
+      run: |
+        UNREAD="https://github.com/notifications?query=is%3Aunread+org%3Acertbot++"
+        REVIEWS="https://github.com/notifications?query=reason%3Areview-requested"
+        PRS="https://github.com/pulls"
+        ASSIGNMENTS:"https://github.com/notifications?query=org%3Acertbot++reason%3Aassign+"
+        echo "{\"text\":\"\n\n
+        - ##### Unread Messages\n\n
+        (link)[$UNREAD]:arrow_upper_right:\n\n
+        - ##### Review Requests\n\n
+        (link)[$REVIEWS]:arrow_upper_right:\n\n
+        - ##### Your Open Pull Requests.\n\n
+        (link)[$PRS]:arrow_upper_right:\n\n
+        - ##### Your Assignments\n\n
+        (link)[$ASSIGNMENTS]:arrow_upper_right:\n\n
+        }" > mattermost.json
+    - uses: mattermost/action-mattermost-notify@master
+      env:
+        MATTERMOST_WEBHOOK_URL: ${{ secrets.MATTERMOST_WEBHOOK_URL }}
+          
