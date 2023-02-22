@@ -17,13 +17,13 @@ jobs:
         PRS="https://github.com/pulls"
         ASSIGNMENTS="https://github.com/notifications?query=org%3Acertbot++reason%3Aassign+"
         echo "{\"text\":\"##### Unread Messages\n\n
-        (link)[$UNREAD] :arrow_upper_right: \n\n
+        $UNREAD :arrow_upper_right:\n\n
         - ##### Review Requests\n\n
-        (link)[$REVIEWS] :arrow_upper_right: \n\n
+        $REVIEWS :arrow_upper_right:\n\n
         - ##### Your Open Pull Requests.\n\n
-        (link)[$PRS] :arrow_upper_right: \n\n
+        $PRS :arrow_upper_right:\n\n
         - ##### Your Assignments\n\n
-        (link)[$ASSIGNMENTS] :arrow_upper_right: \n\n
+        $ASSIGNMENTS :arrow_upper_right:\n\n
         }" > mattermost.json
     - uses: mattermost/action-mattermost-notify@master
       env:
