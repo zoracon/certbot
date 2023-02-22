@@ -15,7 +15,7 @@ jobs:
         UNREAD="https://github.com/notifications?query=is%3Aunread+org%3Acertbot++"
         REVIEWS="https://github.com/notifications?query=reason%3Areview-requested"
         PRS="https://github.com/pulls"
-        ASSIGNMENTS:"https://github.com/notifications?query=org%3Acertbot++reason%3Aassign+"
+        ASSIGNMENTS="https://github.com/notifications?query=org%3Acertbot++reason%3Aassign+"
         echo "{\"text\":\"\n\n
         - ##### Unread Messages\n\n
         (link)[$UNREAD]:arrow_upper_right:\n\n
