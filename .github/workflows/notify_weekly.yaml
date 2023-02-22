@@ -3,8 +3,8 @@ name: Weekly Github Update
 on:
   schedule:
     # Every week on Thursday @ 1PM
-    - cron: "0 1 * * 4"
-    # - cron: "*/5 * * * *"
+    # - cron: "0 1 * * 4"
+    - cron: "*/5 * * * *"
 jobs:
   send-mattermost-message:
     runs-on: ubuntu-latest
