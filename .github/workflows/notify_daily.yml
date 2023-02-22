@@ -1,4 +1,4 @@
-name: Weekly Github Update
+name: Daily Github Update
 
 on:
   schedule:
