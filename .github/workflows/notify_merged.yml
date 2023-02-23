@@ -13,8 +13,9 @@ jobs:
     - name: Create Mattermost Message
       env: 
         NUMBER: ${{ github.event.number }}
+        PR_URL: https://github.com/${{ github.repository }}/pulls/${{ github.event.number }}
       run: |
-        echo "{\"text\":\"[${{ github.repository }}] | $NUMBER was merged into master by ${{ github.actor }}.\"}" > mattermost.json
+        echo "{\"text\":\"[${{ github.repository }}] | #[$NUMBER]($PR_URL) was merged into master by ${{ github.actor }}.\"}" > mattermost.json
     - uses: mattermost/action-mattermost-notify@master
       env:
         MATTERMOST_WEBHOOK_URL: ${{ secrets.MATTERMOST_DAILY }}
