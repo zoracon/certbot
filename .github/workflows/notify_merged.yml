@@ -11,10 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Create Mattermost Message
+      env: 
+        NUMBER: ${{ github.event.number }}
       run: |
         echo "{\"text\":\"[${{ github.repository }}] | $NUMBER was merged into master by ${{ github.actor }}.\"}" > mattermost.json
-      env: 
-        NUMBER: ${{ github.event.issue.number }}
     - uses: mattermost/action-mattermost-notify@master
       env:
         MATTERMOST_WEBHOOK_URL: ${{ secrets.MATTERMOST_DAILY }}
