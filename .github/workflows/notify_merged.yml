@@ -1,4 +1,4 @@
-name: Repo Update
+name: Merge Event
 
 on:
   pull_request:
