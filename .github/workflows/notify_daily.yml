@@ -1,30 +1,18 @@
-name: Daily Github Update
+name: Repo Update
 
 on:
-  schedule:
-    # 6AM Everyday
-    # - cron: "0 6 * * *"
-    - cron: "*/5 * * * *"
-jobs:
-  send-mattermost-message:
-    runs-on: ubuntu-latest
+  pull_request:
+    types:
+      - closed
 
+jobs:
+  if_merged:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
     steps:
     - name: Create Mattermost Message
       run: |
-        UNREAD="https://github.com/notifications?query=is%3Aunread+org%3Acertbot++"
-        REVIEWS="https://github.com/notifications?query=reason%3Areview-requested"
-        PRS="https://github.com/pulls"
-        ASSIGNMENTS="https://github.com/notifications?query=org%3Acertbot++reason%3Aassign+"
-        echo "{\"text\":\"##### Unread Messages \n\n
-        $UNREAD :arrow_upper_right: \n\n
-        - ##### Review Requests \n\n
-        $REVIEWS :arrow_upper_right: \n\n
-        - ##### Your Open Pull Requests. \n\n
-        $PRS :arrow_upper_right:\n\n
-        - ##### Your Assignments \n\n
-        $ASSIGNMENTS :arrow_upper_right: \n\n
-        }" > mattermost.json
+        echo "{\"text\":\"${{ GITHUB_REPOSITORY }} | ${{ github.event.issue.number }} was merged into master by ${{ github.actor }}. \n\n}" > mattermost.json
     - uses: mattermost/action-mattermost-notify@master
       env:
         MATTERMOST_WEBHOOK_URL: ${{ secrets.MATTERMOST_DAILY }}
