@@ -12,8 +12,10 @@ jobs:
     steps:
     - name: Create Mattermost Message
       run: |
-        echo "{\"text\":\"${{ github.respository }} | ${{ github.event.issue.number }} was merged into master by ${{ github.actor }}.\" > mattermost.json
+        echo "{\"text\":\"[${{ github.repository }}] $NUMBER was merged into master by ${{ github.actor }}.\" > mattermost.json
     - uses: mattermost/action-mattermost-notify@master
       env:
         MATTERMOST_WEBHOOK_URL: ${{ secrets.MATTERMOST_DAILY }}
+        NUMBER: ${{ github.event.issue.number }}
+        
           
