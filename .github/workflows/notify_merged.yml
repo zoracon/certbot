@@ -13,7 +13,8 @@ jobs:
     - name: Create Mattermost Message
       env: 
         NUMBER: ${{ github.event.number }}
-        PR_URL: https://github.com/${{ github.repository }}/pull/${{ github.event.number }}
+        REPO: ${{ github.repository }}
+        PR_URL: https://github.com/$REPO/pull/$NUMBER
       run: |
         echo "{\"text\":\"[${{ github.repository }}] | #[$NUMBER]($PR_URL) was merged into master by ${{ github.actor }}.\"}" > mattermost.json
     - uses: mattermost/action-mattermost-notify@master
