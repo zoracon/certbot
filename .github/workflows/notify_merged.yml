@@ -11,11 +11,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Create Mattermost Message
+      #https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#using-an-intermediate-environment-variable
       env: 
         NUMBER: ${{ github.event.number }}
         PR_URL: https://github.com/${{ github.repository }}/pull/${{ github.event.number }}
+        REPO: ${{ github.repository }}
+        USER: ${{ github.actor }}
       run: |
-        echo "{\"text\":\"[${{ github.repository }}] | #[$NUMBER]($PR_URL) was merged into master by ${{ github.actor }}.\"}" > mattermost.json
+        echo "{\"text\":\"[$REPO] | #[$NUMBER]($PR_URL) was merged into master by $USER.\"}" > mattermost.json
     - uses: mattermost/action-mattermost-notify@master
       env:
         MATTERMOST_WEBHOOK_URL: ${{ secrets.MATTERMOST_DAILY }}
