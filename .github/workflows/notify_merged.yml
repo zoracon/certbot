@@ -1,13 +1,12 @@
 name: Merge Event
 
 on:
-  pull_request:
-    types:
-      - closed
+  pull_request_review:
+    types: [submitted]
 
 jobs:
-  if_merged:
-    if: github.event.pull_request.merged == true
+  approved:
+    if: github.event.review.state == 'approved'
     runs-on: ubuntu-latest
     steps:
     - name: Create Mattermost Message
