@@ -15,8 +15,8 @@ jobs:
         NUMBER: ${{ github.event.number }}
         PR_URL: https://github.com/${{ github.repository }}/pull/${{ github.event.number }}
         REPO: ${{ github.repository }}
-        USER: ${{ github.actor }}
-        TITLE: ${{ github.event.pull_request.title }}
+        USER: ${{ github.author.username }}
+        TITLE: ${{ github.event.push.title }}
       run: |
         jq --null-input \
                 --arg number "$NUMBER" \
