@@ -13,10 +13,10 @@ jobs:
       # https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#using-an-intermediate-environment-variable
       env: 
         NUMBER: ${{ github.event.number }}
-        PR_URL: https://github.com/${{ github.repository }}/pull/${{ github.event.number }}
+        PR_URL: ${{ github.event.push.commits[0].url }}
         REPO: ${{ github.repository }}
-        USER: ${{ github.author.username }}
-        TITLE: ${{ github.event.push.title }}
+        USER: ${{ github.actor }}
+        TITLE: ${{ github.ref_name }}
       run: |
         jq --null-input \
                 --arg number "$NUMBER" \
