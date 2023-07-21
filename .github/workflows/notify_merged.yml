@@ -12,7 +12,7 @@ jobs:
     - name: Create Mattermost Message
       # https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#using-an-intermediate-environment-variable
       env: 
-        NUMBER: ${{ github.event.push.after }}
+        NUMBER: ${{ github.event.after }}
 #         PR_URL: ${{ github.event.push.commits[0].url }}
         REPO: ${{ github.repository }}
         USER: ${{ github.actor }}
