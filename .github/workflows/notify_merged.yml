@@ -12,11 +12,11 @@ jobs:
     - name: Create Mattermost Message
       # https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#using-an-intermediate-environment-variable
       env: 
-        NUMBER: ${{ github.event.number }}
+        NUMBER: ${{ github.event.push.after.id }}
         PR_URL: ${{ github.event.push.commits[0].url }}
         REPO: ${{ github.repository }}
         USER: ${{ github.actor }}
-        TITLE: ${{ github.ref_name }}
+#         TITLE: ${{  }}
       run: |
         jq --null-input \
                 --arg number "$NUMBER" \
@@ -24,7 +24,7 @@ jobs:
                 --arg repo "$REPO" \
                 --arg user "$USER" \
                 --arg title "$TITLE" \
-        '{ "text": "[\($repo)] | [\($title) #\($number)](\($pr_url)) was merged into master by \($user)" }' > mattermost.json
+        '{ "text": "[\($repo)] | #$number was merged into master by \($user)" }' > mattermost.json
     - uses: mattermost/action-mattermost-notify@master
       env:
         MATTERMOST_WEBHOOK_URL: ${{ secrets.MATTERMOST_DAILY }}
