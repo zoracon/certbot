@@ -13,11 +13,12 @@ jobs:
       # https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#using-an-intermediate-environment-variable
       env: 
         NUMBER: ${{ github.event.after }}
-#         PR_URL: ${{ github.event.push.commits[0].url }}
+        PR_URL: ${{ github.event.commits[0].url }}
         REPO: ${{ github.repository }}
         USER: ${{ github.actor }}
 #         TITLE: ${{  }}
       run: |
+        $NUMBER = $NUMBER | cut -c -7
         jq --null-input \
                 --arg number "$NUMBER" \
                 --arg pr_url "$PR_URL" \
