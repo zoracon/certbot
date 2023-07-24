@@ -1,31 +1,31 @@
 name: Merge Event
 
 on:
-  push:
-    branches:
-      - master
+  pull_request:
+    types:
+      - closed
 
 jobs:
-  on_merge:
+  if_merged:
+    if: github.event.pull_request.merged == true && !github.event.pull_request.head.repo.fork 
     runs-on: ubuntu-latest
     steps:
     - name: Create Mattermost Message
-      # https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#using-an-intermediate-environment-variable
+      # https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#example-of-a-script-injection-attack
       env: 
-        NUMBER: ${{ github.event.after }}
-        PR_URL: ${{ github.event.commits[0].url }}
+        NUMBER: ${{ github.event.number }}
+        PR_URL: https://github.com/${{ github.repository }}/pull/${{ github.event.number }}
         REPO: ${{ github.repository }}
         USER: ${{ github.actor }}
-#         TITLE: ${{  }}
+        TITLE: ${{ github.event.pull_request.title }}
       run: |
-        $NUMBER = $NUMBER | cut -c -7
         jq --null-input \
                 --arg number "$NUMBER" \
                 --arg pr_url "$PR_URL" \
                 --arg repo "$REPO" \
                 --arg user "$USER" \
                 --arg title "$TITLE" \
-        '{ "text": "[\($repo)] | #\($number) was merged into master by \($user)" }' > mattermost.json
+        '{ "text": "[\($repo)] | [\($title) #\($number)](\($pr_url)) was merged into master by \($user)" }' > mattermost.json
     - uses: mattermost/action-mattermost-notify@master
       env:
-        MATTERMOST_WEBHOOK_URL: ${{ secrets.MATTERMOST_DAILY }}
+        MATTERMOST_WEBHOOK_URL: ${{ secrets.MATTERMOST_MERGE_WEBHOOK }}
