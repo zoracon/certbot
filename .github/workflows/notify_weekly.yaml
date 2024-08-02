@@ -3,14 +3,16 @@ name: Weekly Github Update
 on:
   schedule:
     # Every week on Thursday @ 1PM
-    - cron: "0 1 * * 4"
-    # - cron: "*/5 * * * *" Test Cron
+    # - cron: "0 1 * * 4"
+    - cron: "*/5 * * * *" Test Cron
 jobs:
   send-mattermost-message:
     runs-on: ubuntu-latest
 
     steps:
     - name: Create Mattermost Message
+      env:
+        MATTERMOST_WEBHOOK_URL: ${{ secrets.MATTERMOST_WEBHOOK_URL }}
       run: |
         DATE=$(date  --date="7 days ago" +"%Y-%m-%d")
         MERGED_URL="https://github.com/pulls?q=merged%3A%3E${DATE}+org%3Acertbot+"
@@ -22,6 +24,4 @@ jobs:
         - The key words SHOULD and MAY in this message are to be interpreted as described in [RFC 8147](https://www.rfc-editor.org/rfc/rfc8174). \"
         }" > mattermost.json
     - uses: mattermost/action-mattermost-notify@master
-      env:
-        MATTERMOST_WEBHOOK_URL: ${{ secrets.MATTERMOST_WEBHOOK_URL }}
           
