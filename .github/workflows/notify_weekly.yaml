@@ -19,9 +19,7 @@ jobs:
           MATTERMOST_WEBHOOK_URL: ${{ secrets.MATTERMOST_WEBHOOK_URL }}
           PAYLOAD: |-
             {
-              "text": "Updates Across Certbot Repos:
-                - Certbot team members SHOULD look at: $MERGED_URL and MAY also want to look at: [link]($UPDATED_URL),
-                - The key words SHOULD and MAY in this message are to be interpreted as described in [RFC 8147](https://www.rfc-editor.org/rfc/rfc8174).",
+              "text": "test text",
               "channel": "private certbot",
               "username": "${{ github.triggering_actor }}",
               "icon": "https://cdn3.iconfinder.com/data/icons/system-basic-vol-4-1/20/icon-note-attention-alt3-512.png"
