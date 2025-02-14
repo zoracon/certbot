@@ -10,7 +10,6 @@ jobs:
   send-mattermost-message:
     runs-on: ubuntu-latest
     steps:
-    - name: Create Mattermost Message
     - uses: mattermost/action-mattermost-notify@master
       with:
         MATTERMOST_WEBHOOK_URL: ${{ secrets.MATTERMOST_MERGE_WEBHOOK }}
