@@ -1,0 +1,19 @@
+name: Issues Assigned
+
+on:
+  issues:
+    types: [assigned]
+
+  pull_request:
+     types: [review_requested, assigned]
+jobs:
+  send-mattermost-message:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Create Mattermost Message
+    - uses: mattermost/action-mattermost-notify@master
+      with:
+        MATTERMOST_WEBHOOK_URL: ${{ secrets.MATTERMOST_MERGE_WEBHOOK }}
+        TEXT: >
+            ${{ github.event_name | capitalize }} #${{ github.event.number }} "${{ github.event.issue.title || github.event.pull_request.title }}" assigned to ${{ github.event.issue.assignee.login || github.event.pull_request.assignee.login }}: ${{ github.event.issue.html_url || github.event.pull_request.html_url }}
+            
