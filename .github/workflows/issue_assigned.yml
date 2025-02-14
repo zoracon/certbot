@@ -1,4 +1,4 @@
-name: Issues Assigned
+name: Issue Assigned
 
 on:
   issues:
