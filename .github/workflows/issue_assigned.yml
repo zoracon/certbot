@@ -3,7 +3,6 @@ name: Issue Assigned
 on:
   issues:
     types: [assigned]
-
   pull_request:
      types: [review_requested, assigned]
 jobs:
