@@ -6,8 +6,8 @@ body:
   - type: textarea
     id: problem
     attributes:
-      label: What problem does this feature solve?
-      description: Explain the issue this feature addresses, or the benefit it provides.
+      label: What problem does this feature solve or what does it enhance?
+      description: Explain what this feature addresses, or the benefit it provides.
       placeholder: For example, "Currently, users have to manually do X, which is time-consuming."
     validations:
       required: true
