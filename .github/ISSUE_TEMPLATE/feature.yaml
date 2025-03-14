@@ -1,7 +1,6 @@
-# .github/ISSUE_TEMPLATE/feature.yaml
 name: Feature Request
 description: Suggest a new feature or improvement to Certbot
-title: "[Feature　Request]: "
+title: "[Feature Request]: "
 labels: ["feature request"]
 body:
   - type: markdown
@@ -47,41 +46,41 @@ body:
       label: Relevant Area
       description: Which part of the project does this relate to?
       options:
-        area: acme
-        area: apache
-        area: cert management
-        area: code health
-        area: compatibility-test
-        area: csr
-        area: debian / ubuntu
-        area: dns
-        area: docker
-        area: documentation
-        area: error handling
-        area: fedora / redhat / CentOS
-        area: hooks
-        area: install
-        area: logging
-        area: macOS
-        area: manual authenticator
-        area: mypy
-        area: nginx
-        area: ocsp
-        area: performance
-        area: pkging
-        area: policy
-        area: pyca
-        area: python
-        area: refactoring
-        area: rename
-        area: renewal
-        area: security
-        area: snaps
-        area: spec-compliance
-        area: standalone
-        area: SUSE
-        area: testing
-        area: tooling
-        area: ui / ux
-        area: windows
-        area: 3rd party 
+        - label: acme
+        - label: apache
+        - label: cert management
+        - label: code health
+        - label: compatibility-test
+        - label: csr
+        - label: debian / ubuntu
+        - label: dns
+        - label: docker
+        - label: documentation
+        - label: error handling
+        - label: fedora / redhat / CentOS
+        - label: hooks
+        - label: install
+        - label: logging
+        - label: macOS
+        - label: manual authenticator
+        - label: mypy
+        - label: nginx
+        - label: ocsp
+        - label: performance
+        - label: pkging
+        - label: policy
+        - label: pyca
+        - label: python
+        - label: refactoring
+        - label: rename
+        - label: renewal
+        - label: security
+        - label: snaps
+        - label: spec-compliance
+        - label: standalone
+        - label: SUSE
+        - label: testing
+        - label: tooling
+        - label: ui / ux
+        - label: windows
+        - label: 3rd party
