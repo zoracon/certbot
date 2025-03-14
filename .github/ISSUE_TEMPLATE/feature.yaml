@@ -30,16 +30,6 @@ body:
       label: Alternatives Considered
       description: Have you considered any alternative solutions?
       placeholder: For example, "We considered Y, but Z is a better approach because..."
-  - type: checkboxes
-    id: related
-    attributes:
-      label: Related Issues
-      description: Check any related issues or pull requests.
-      options:
-        - label: I have searched the existing issues and pull requests
-          required: true
-        - label: This relates to issue #...
-        - label: This relates to pull request #...
   - type: dropdown
     id: area
     attributes:
