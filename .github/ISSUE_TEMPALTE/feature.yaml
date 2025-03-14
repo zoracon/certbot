@@ -1,0 +1,87 @@
+# .github/ISSUE_TEMPLATE/feature.yaml
+name: Feature Request
+description: Suggest a new feature or improvement to Certbot
+title: "[Feature　Request]: "
+labels: ["feature request"]
+body:
+  - type: markdown
+    attributes:
+      label: Description
+      description: Provide a clear and concise description of the feature you're proposing.
+      placeholder: Describe the feature here.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does this feature solve?
+      description: Explain the issue this feature addresses, or the benefit it provides.
+      placeholder: For example, "Currently, users have to manually do X, which is time-consuming."
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution
+      description: Describe the solution you'd like to see implemented.
+      placeholder: For example, "Implement a new button that automatically does X."
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: Have you considered any alternative solutions?
+      placeholder: For example, "We considered Y, but Z is a better approach because..."
+  - type: checkboxes
+    id: related
+    attributes:
+      label: Related Issues
+      description: Check any related issues or pull requests.
+      options:
+        - label: I have searched the existing issues and pull requests
+          required: true
+        - label: This relates to issue #...
+        - label: This relates to pull request #...
+  - type: dropdown
+    id: area
+    attributes:
+      label: Relevant Area
+      description: Which part of the project does this relate to?
+      options:
+        area: acme
+        area: apache
+        area: cert management
+        area: code health
+        area: compatibility-test
+        area: csr
+        area: debian / ubuntu
+        area: dns
+        area: docker
+        area: documentation
+        area: error handling
+        area: fedora / redhat / CentOS
+        area: hooks
+        area: install
+        area: logging
+        area: macOS
+        area: manual authenticator
+        area: mypy
+        area: nginx
+        area: ocsp
+        area: performance
+        area: pkging
+        area: policy
+        area: pyca
+        area: python
+        area: refactoring
+        area: rename
+        area: renewal
+        area: security
+        area: snaps
+        area: spec-compliance
+        area: standalone
+        area: SUSE
+        area: testing
+        area: tooling
+        area: ui / ux
+        area: windows
+        area: 3rd party 
