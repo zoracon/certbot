@@ -3,11 +3,6 @@ description: Suggest a new feature or improvement to Certbot
 title: "[Feature Request]: "
 labels: ["feature request"]
 body:
-  - type: markdown
-    attributes:
-      label: Description
-      description: Provide a clear and concise description of the feature you're proposing.
-      placeholder: Describe the feature here.
   - type: textarea
     id: problem
     attributes:
