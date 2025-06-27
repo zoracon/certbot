@@ -1,7 +1,6 @@
 name: Add a Host
 description: Adds a new host to our Hosting Providers list
 title: "[New Host]: "
-labels: ["new host"]
 body:
   - type: input
     id: name
