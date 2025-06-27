@@ -31,7 +31,7 @@ body:
     attributes:
       label: Announcement
       description: "link for announcement"
-   - type: input
+  - type: input
     id: tutorial
     attributes:
       label: Tutorial
@@ -49,9 +49,9 @@ body:
     validations:
       required: true
   - type: textarea
-  id: repro
-  attributes:
-    label: Note
-    description: "good for things like noting which products have https, or that the site is available only in certain languages. it's not meant for advertising."
-  validations:
-    required: true
+    id: repro
+    attributes:
+      label: Note
+      description: "good for things like noting which products have https, or that the site is available only in certain languages. it's not meant for advertising."
+    validations:
+      required: true
