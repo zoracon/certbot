@@ -13,7 +13,7 @@ body:
     id: link
     attributes:
       label: Link
-      description: "usually a link to the provider's main page; it's where clicking on the name will go."
+      description: "Usually a link to the provider's main page; it's where clicking on the name will go."
     validations:
       required: true
   - type: dropdown
@@ -30,28 +30,28 @@ body:
     id: announcement
     attributes:
       label: Announcement
-      description: "link for announcement"
+      description: "Link for announcement"
   - type: input
     id: tutorial
     attributes:
       label: Tutorial
-      description: "link for a tutorial"
+      description: "Link for a tutorial"
   - type: input
     id: plan
     attributes:
       label: Plan
-      description: "link for planned support"
+      description: "Link for planned support"
   - type: input
     id: reviewed
     attributes:
       label: Reviewed
-      description: "should be a date in format 2019.7.11"
+      description: "Should be a date in format 2019.7.11"
     validations:
       required: true
   - type: textarea
     id: repro
     attributes:
       label: Note
-      description: "good for things like noting which products have https, or that the site is available only in certain languages. it's not meant for advertising."
+      description: "Good for things like noting which products have https, or that the site is available only in certain languages. it's not meant for advertising."
     validations:
       required: true
