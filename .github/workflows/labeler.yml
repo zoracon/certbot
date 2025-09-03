@@ -1,0 +1,98 @@
+name: labeler
+
+on: [pull_request]
+
+jobs:
+  labeler:
+    permissions:
+      pull-requests: write
+      contents: read
+      issues: write
+    runs-on: ubuntu-latest
+    name: Label the PR size
+    steps:
+      - uses: codelytv/pr-size-labeler@v1
+        with:
+          xs_label: 'size/xs'
+          xs_max_size: '1'
+          s_label: 'size/s'
+          s_max_size: '5'
+          m_label: 'size/m'
+          m_max_size: '10'
+          l_label: 'size/l'
+          l_max_size: '20'
+          xl_label: 'size/xl'
+          fail_if_xl: 'false'
+          message_if_xl: >
+            This PR exceeds the recommended size of 1000 lines.
+            Please make sure you are NOT addressing multiple issues with one PR.
+            Note this PR might be rejected due to its size.
+          github_api_url: 'https://api.github.com'
+          files_to_ignore: |
+            *.pyc
+            *.egg-info/
+            .eggs/
+            build/
+            dist*/
+            /venv*/
+            /.tox/
+            /releases*/
+            /log*
+            letsencrypt.log
+            certbot.log
+            poetry.lock
+            
+            # coverage
+            .coverage
+            .coverage.*
+            /htmlcov/
+            
+            /.vagrant
+            
+            tags
+            
+            # editor temporary files
+            *~
+            *.sw?
+            \#*#
+            .idea
+            .ropeproject
+            .vscode
+            *.sublime-project
+            *.sublime-workspace
+            
+            # auth --cert-path --chain-path
+            /*.pem
+            
+            .venv
+            
+            # pytest cache
+            .cache
+            .mypy_cache/
+            .pytest_cache/
+            
+            # docker files
+            .docker
+            
+            # certbot tests
+            .certbot_test_workspace
+            **/assets/pebble*
+            **/assets/challtestsrv*
+            
+            # snap files
+            .snapcraft
+            parts
+            prime
+            stage
+            *.snap
+            snap-constraints.txt
+            qemu-*
+            certbot-dns*/certbot-dns*_amd64*.txt
+            certbot-dns*/certbot-dns*_arm*.txt
+            /certbot_amd64*.txt
+            /certbot_arm*.txt
+            certbot-dns*/snap
+            snapcraft.cfg
+            
+            # pyenv files
+            .python-version
